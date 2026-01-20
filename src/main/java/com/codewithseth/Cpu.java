@@ -1,0 +1,13 @@
+package com.codewithseth;
+
+public class Cpu {
+    private float speed;
+
+    public float getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed;
+    }
+}
