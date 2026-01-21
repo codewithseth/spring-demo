@@ -47,6 +47,26 @@ public class Main {
         Student s2 = context2.getBean("s2", Student.class);
         System.out.println(s2.getName());
 
+        // Singleton bean scope
+        Dog dog1 = context.getBean("dog", Dog.class);
+        Dog dog2 = context.getBean("dog", Dog.class);
+        System.out.println(dog1.hashCode());
+        System.out.println(dog2.hashCode());
+
+        Cat cat1 = context.getBean("cat1", Cat.class);
+        Cat cat2 = context.getBean("cat2", Cat.class);
+        System.out.println(cat1.hashCode() + " / " + cat1.getName());
+        System.out.println(cat2.hashCode() + " / " + cat2.getName());
+
+        Tiger tiger1 = context.getBean("tiger1", Tiger.class);
+        System.out.println(tiger1.getName());
+
+        // Prototype bean scope
+        Ipad ip1 = context.getBean("ipad", Ipad.class);
+        Ipad ip2 = context.getBean("ipad", Ipad.class);
+        System.out.println("Is it singleton bean scope " + (ip1.hashCode() == ip2.hashCode()));
+
+        // Others
         var res = context.getBean(UserController.class);
         res.createUser();
         res.deleteUser();

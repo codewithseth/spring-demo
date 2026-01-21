@@ -1,9 +1,12 @@
 package com.codewithseth;
 
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Scope;
 
 @Configuration
 @ComponentScan(basePackages = "com.codewithseth")
@@ -70,5 +73,29 @@ public class Config {
         c.setModel("Asus");
         c.setCpu(cpu);
         return c;
+    }
+
+    @Bean
+    @Scope(value = BeanDefinition.SCOPE_SINGLETON)
+    Cat cat1() {
+        var c = new Cat();
+        c.setName("Meme");
+        return c;
+    }
+
+    @Bean
+    @Scope(value = BeanDefinition.SCOPE_SINGLETON)
+    Cat cat2() {
+        var c = new Cat();
+        c.setName("Mooo");
+        return c;
+    }
+
+    @Bean
+    @Lazy
+    Tiger tiger1() {
+        var t = new Tiger();
+        t.setName("Kal Kach");
+        return t;
     }
 }
